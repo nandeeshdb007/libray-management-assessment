@@ -44,3 +44,13 @@ export interface Analytics {
     categoryCounts: Map<string, number>;
     monthlyIssues: Map<string, number>;
 }
+
+
+export interface LibraryContextType {
+    books: Book[];
+    students: Student[];
+    borrowRecords: BorrowRecord[];
+    activeTab: TabType;
+    setActiveTab: (tab: TabType) => void;
+    analytics: Analytics;
+}

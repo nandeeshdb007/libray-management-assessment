@@ -1,6 +1,6 @@
 "use client";
 import { NavigationData } from "@/src/common/contants";
-import useDashboard from "@/src/hooks/useDashboard";
+import useDashboard from "@/src/hooks/useLibrary";
 
 const NavigationTab = () => {
   const { activeTab, setActiveTab } = useDashboard();
