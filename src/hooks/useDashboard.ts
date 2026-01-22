@@ -2,8 +2,8 @@ import { useState } from "react";
 
 const useDashboard = () => {
   const [activeTab, setActiveTab] = useState<
-    "dashboard" | "books" | "students" | "transactions" | "analytics"
-  >("dashboard");
+    "home" | "books" | "students" | "transactions" | "analytics"
+  >("home");
 
   return { activeTab, setActiveTab };
 };
