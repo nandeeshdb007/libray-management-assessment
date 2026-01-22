@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const useDashboard = () => {
+const useLibrary = () => {
   const [activeTab, setActiveTab] = useState<
-    "home" | "books" | "students" | "transactions" | "analytics"
-  >("home");
+    "dashboard" | "books" | "students" | "transactions" | "analytics"
+  >("dashboard");
 
   return { activeTab, setActiveTab };
 };
-export default useDashboard;
+export default useLibrary;

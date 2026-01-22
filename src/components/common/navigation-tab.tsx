@@ -1,9 +1,10 @@
 "use client";
 import { NavigationData } from "@/src/common/contants";
-import useDashboard from "@/src/hooks/useLibrary";
+import useLibrary from "@/src/hooks/useLibrary";
+import { use } from "react";
 
 const NavigationTab = () => {
-  const { activeTab, setActiveTab } = useDashboard();
+  const { activeTab, setActiveTab } = useLibrary();
   return (
     <nav className="bg-white border-b border-slate-200 shadow-sm sticky top-16 z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
