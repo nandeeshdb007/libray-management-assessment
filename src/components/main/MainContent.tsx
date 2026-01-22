@@ -1,5 +1,5 @@
 import Header from "../common/header";
-import NavigationTab from "../common/navigation-tab";
+import NavigationTab from "../common/NavigationTab";
 
 const MainContent= () => {
 
