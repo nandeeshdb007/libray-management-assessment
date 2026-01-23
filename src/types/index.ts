@@ -63,3 +63,9 @@ export interface DashboardProps {
     onIssueClick: () => void;
     onReturnBook: (id: string) => void;
 }
+
+export interface StudentsTabProps {
+    students: Student[];
+    overdueRecords: BorrowRecord[];
+    bookMap: Map<string, any>;
+}

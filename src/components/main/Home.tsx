@@ -6,6 +6,7 @@ import { useLibrary } from "@/src/hooks/useLibrary";
 import { Dashboard } from "../feature/Dashboard";
 import { Header } from "../layout/Header";
 import { Navigation } from "../layout/NavigationTabs";
+import { StudentsTab } from "../feature/StudentTab";
 
 export default function Home() {
   const { tab, setTab, handleIssueClick } = useHome();
@@ -15,6 +16,7 @@ export default function Home() {
     overdueRecords,
     analytics,
     returnBook,
+    students,
   } = useLibrary();
 
   return (
@@ -31,6 +33,13 @@ export default function Home() {
             studentMap={studentMap}
             onIssueClick={() => handleIssueClick()}
             onReturnBook={returnBook}
+          />
+        )}
+                {tab === 'students' && (
+          <StudentsTab
+            students={students}
+            overdueRecords={overdueRecords}
+            bookMap={bookMap}
           />
         )}
       </main>
