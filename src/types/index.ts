@@ -31,3 +31,9 @@ export interface BorrowRecord {
 }
 
 export type TabType = 'dashboard' | 'books' | 'students' | 'transactions' | 'analytics';
+
+
+export interface NavigationProps {
+    activeTab: TabType;
+    onTabChange: (tab: TabType) => void;
+}
