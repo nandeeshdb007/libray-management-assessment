@@ -7,6 +7,7 @@ import { Dashboard } from "../feature/Dashboard";
 import { Header } from "../layout/Header";
 import { Navigation } from "../layout/NavigationTabs";
 import { StudentsTab } from "../feature/StudentTab";
+import { TransactionsTab } from "../feature/TransactionTab";
 
 export default function Home() {
   const { tab, setTab, handleIssueClick } = useHome();
@@ -17,6 +18,7 @@ export default function Home() {
     analytics,
     returnBook,
     students,
+    records
   } = useLibrary();
 
   return (
@@ -35,11 +37,19 @@ export default function Home() {
             onReturnBook={returnBook}
           />
         )}
-                {tab === 'students' && (
+        {tab === "students" && (
           <StudentsTab
             students={students}
             overdueRecords={overdueRecords}
             bookMap={bookMap}
+          />
+        )}
+                {tab === 'transactions' && (
+          <TransactionsTab
+            records={records}
+            bookMap={bookMap}
+            studentMap={studentMap}
+            onReturnBook={returnBook}
           />
         )}
       </main>

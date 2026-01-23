@@ -69,3 +69,10 @@ export interface StudentsTabProps {
     overdueRecords: BorrowRecord[];
     bookMap: Map<string, any>;
 }
+
+export interface TransactionsTabProps {
+    records: BorrowRecord[];
+    bookMap: Map<string, any>;
+    studentMap: Map<string, any>;
+    onReturnBook: (id: string) => void;
+}
