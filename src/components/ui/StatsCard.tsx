@@ -1,15 +1,6 @@
 "use client";
 
-import { LucideIcon } from 'lucide-react';
-
-interface StatCardProps {
-    title: string;
-    value: number;
-    icon: LucideIcon;
-    gradient: string;
-    iconColor: string;
-    valueColor?: string;
-}
+import { StatCardProps } from "@/src/types";
 
 export const StatCard = ({ title, value, icon: Icon, gradient, iconColor, valueColor = 'text-slate-800' }: StatCardProps) => {
     return (

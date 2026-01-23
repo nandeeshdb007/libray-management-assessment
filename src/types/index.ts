@@ -1,3 +1,4 @@
+import { LucideIcon } from "lucide-react";
 
 export interface Book {
     id: string;
@@ -36,4 +37,13 @@ export type TabType = 'dashboard' | 'books' | 'students' | 'transactions' | 'ana
 export interface NavigationProps {
     activeTab: TabType;
     onTabChange: (tab: TabType) => void;
+}
+
+export interface StatCardProps {
+    title: string;
+    value: number;
+    icon: LucideIcon;
+    gradient: string;
+    iconColor: string;
+    valueColor?: string;
 }
