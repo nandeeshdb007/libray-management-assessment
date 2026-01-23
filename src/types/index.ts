@@ -47,3 +47,19 @@ export interface StatCardProps {
     iconColor: string;
     valueColor?: string;
 }
+
+
+export interface DashboardProps {
+    analytics: {
+        totalBooks: number;
+        availableBooks: number;
+        issuedBooks: number;
+        overdueCount: number;
+        topBooks: any[];
+    };
+    overdueRecords: BorrowRecord[];
+    bookMap: Map<string, any>;
+    studentMap: Map<string, any>;
+    onIssueClick: () => void;
+    onReturnBook: (id: string) => void;
+}
