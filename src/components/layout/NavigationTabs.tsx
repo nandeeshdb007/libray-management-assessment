@@ -23,7 +23,7 @@ export const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
     }, [activeTab, emblaApi]);
 
     return (
-        <nav className="bg-white border-b sticky top-16 z-40">
+        <nav className="bg-white border-b sticky top-20 z-40">
             <div className="hidden md:flex max-w-7xl mx-auto px-6 gap-2 justify-center">
                 {tabs.map(({ id, label, icon: Icon }) => (
                     <button
