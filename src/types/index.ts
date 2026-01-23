@@ -86,3 +86,13 @@ export interface BooksTabProps {
     onCategoryChange: (value: string) => void;
     onIssueClick: (bookId: string) => void;
 }
+
+export interface AnalyticsTabProps {
+    analytics: {
+        totalBooks: number;
+        availableBooks: number;
+        issuedBooks: number;
+        categories: Map<string, number>;
+    };
+    studentsCount: number;
+}

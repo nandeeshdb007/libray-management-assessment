@@ -9,9 +9,20 @@ import { Navigation } from "../layout/NavigationTabs";
 import { StudentsTab } from "../feature/StudentTab";
 import { TransactionsTab } from "../feature/TransactionTab";
 import { BooksTab } from "../feature/BooksTab";
+import { AnalyticsTab } from "../feature/AnalyticsTab";
 
 export default function Home() {
-  const { tab, setTab, handleIssueClick, filteredBooks, categories, search, category, setCategory,setSearch  } = useHome();
+  const {
+    tab,
+    setTab,
+    handleIssueClick,
+    filteredBooks,
+    categories,
+    search,
+    category,
+    setCategory,
+    setSearch,
+  } = useHome();
   const {
     bookMap,
     studentMap,
@@ -19,7 +30,7 @@ export default function Home() {
     analytics,
     returnBook,
     students,
-    records
+    records,
   } = useLibrary();
 
   return (
@@ -45,7 +56,7 @@ export default function Home() {
             bookMap={bookMap}
           />
         )}
-                {tab === 'transactions' && (
+        {tab === "transactions" && (
           <TransactionsTab
             records={records}
             bookMap={bookMap}
@@ -53,7 +64,7 @@ export default function Home() {
             onReturnBook={returnBook}
           />
         )}
-             {tab === 'books' && (
+        {tab === "books" && (
           <BooksTab
             books={filteredBooks}
             search={search}
@@ -63,6 +74,9 @@ export default function Home() {
             onCategoryChange={setCategory}
             onIssueClick={handleIssueClick}
           />
+        )}
+        {tab === "analytics" && (
+          <AnalyticsTab analytics={analytics} studentsCount={students.length} />
         )}
       </main>
     </div>
