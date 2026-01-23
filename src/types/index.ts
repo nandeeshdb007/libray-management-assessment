@@ -96,3 +96,16 @@ export interface AnalyticsTabProps {
     };
     studentsCount: number;
 }
+
+
+export interface IssueBookModalProps {
+    isOpen: boolean;
+    books: Book[];
+    students: Student[];
+    selectedBook: string;
+    selectedStudent: string;
+    onClose: () => void;
+    onBookSelect: (id: string) => void;
+    onStudentSelect: (id: string) => void;
+    onConfirm: () => void;
+}

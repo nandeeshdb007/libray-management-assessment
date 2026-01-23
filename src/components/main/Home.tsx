@@ -10,6 +10,8 @@ import { StudentsTab } from "../feature/StudentTab";
 import { TransactionsTab } from "../feature/TransactionTab";
 import { BooksTab } from "../feature/BooksTab";
 import { AnalyticsTab } from "../feature/AnalyticsTab";
+import { IssueBookModal } from "../feature/IssueModal";
+import { students } from "../../contants/data";
 
 export default function Home() {
   const {
@@ -22,7 +24,16 @@ export default function Home() {
     category,
     setCategory,
     setSearch,
+    modal,
+    setModal,
+    selectedBook,
+    handleCloseModal,
+    handleConfirmIssue,
+    selectedStudent,
+    setSelectedBook,
+    setSelectedStudent,
   } = useHome();
+
   const {
     bookMap,
     studentMap,
@@ -31,6 +42,8 @@ export default function Home() {
     returnBook,
     students,
     records,
+    books,
+    issueBook,
   } = useLibrary();
 
   return (
@@ -79,6 +92,17 @@ export default function Home() {
           <AnalyticsTab analytics={analytics} studentsCount={students.length} />
         )}
       </main>
+      <IssueBookModal
+        isOpen={modal}
+        books={books}
+        students={students}
+        selectedBook={selectedBook}
+        selectedStudent={selectedStudent}
+        onClose={handleCloseModal}
+        onBookSelect={setSelectedBook}
+        onStudentSelect={setSelectedStudent}
+        onConfirm={handleConfirmIssue}
+      />
     </div>
   );
 }

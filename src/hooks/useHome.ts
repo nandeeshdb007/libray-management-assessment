@@ -43,7 +43,8 @@ const useHome = () => {
     setSelectedStudent('');
   };
 
-  return { tab, setTab, modal, setModal, selectedBook, handleIssueClick, handleCloseModal, categories, filteredBooks, handleConfirmIssue, setSearch, setCategory, search, category };
+  return { tab, setTab, modal, setModal, selectedBook, handleIssueClick, handleCloseModal, categories, filteredBooks, handleConfirmIssue, setSearch, setCategory, search, category, selectedStudent,setSelectedBook, setSelectedStudent
+ };
 };
 
 export default useHome;
