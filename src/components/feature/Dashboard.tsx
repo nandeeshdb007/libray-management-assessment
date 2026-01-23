@@ -74,33 +74,6 @@ export const Dashboard = ({ analytics, overdueRecords, bookMap, studentMap, onIs
                 </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-6 border">
-                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center">
-                    <TrendingUp className="w-5 h-5 text-purple-600 mr-2" />
-                    Top Borrowed Books
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                    {analytics.topBooks.map((book, i) => (
-                        <div key={book.id} className="relative p-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border hover:shadow-md transition-all">
-                            <div className="absolute -top-2 -left-2 bg-gradient-to-br from-purple-500 to-purple-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">
-                                {i + 1}
-                            </div>
-                            <div className="mt-2">
-                                <p className="font-semibold text-slate-800 text-sm line-clamp-2 mb-2">{book.title}</p>
-                                <p className="text-xs text-slate-600 mb-3">{book.author}</p>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs text-purple-600 font-bold bg-purple-100 px-2 py-1 rounded-full">
-                                        {book.borrowCount} times
-                                    </span>
-                                    <span className={`text-xs font-medium ${book.availableCopies > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                                        {book.availableCopies > 0 ? '✓' : 'Out'}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
         </div>
     )
 }

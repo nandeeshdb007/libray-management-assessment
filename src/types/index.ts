@@ -76,3 +76,13 @@ export interface TransactionsTabProps {
     studentMap: Map<string, any>;
     onReturnBook: (id: string) => void;
 }
+
+export interface BooksTabProps {
+    books: Book[];
+    search: string;
+    category: string;
+    categories: string[];
+    onSearchChange: (value: string) => void;
+    onCategoryChange: (value: string) => void;
+    onIssueClick: (bookId: string) => void;
+}

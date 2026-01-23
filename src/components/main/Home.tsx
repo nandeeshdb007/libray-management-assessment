@@ -8,9 +8,10 @@ import { Header } from "../layout/Header";
 import { Navigation } from "../layout/NavigationTabs";
 import { StudentsTab } from "../feature/StudentTab";
 import { TransactionsTab } from "../feature/TransactionTab";
+import { BooksTab } from "../feature/BooksTab";
 
 export default function Home() {
-  const { tab, setTab, handleIssueClick } = useHome();
+  const { tab, setTab, handleIssueClick, filteredBooks, categories, search, category, setCategory,setSearch  } = useHome();
   const {
     bookMap,
     studentMap,
@@ -50,6 +51,17 @@ export default function Home() {
             bookMap={bookMap}
             studentMap={studentMap}
             onReturnBook={returnBook}
+          />
+        )}
+             {tab === 'books' && (
+          <BooksTab
+            books={filteredBooks}
+            search={search}
+            category={category}
+            categories={categories}
+            onSearchChange={setSearch}
+            onCategoryChange={setCategory}
+            onIssueClick={handleIssueClick}
           />
         )}
       </main>
