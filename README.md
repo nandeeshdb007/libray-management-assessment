@@ -89,18 +89,6 @@ const filteredBooks = useMemo(() => {
 
 3. **Open** [http://localhost:3000](http://localhost:3000)
 
-## Project Structure
 
-```
-src/
-├── app/                 # Next.js app router
-├── components/
-│   ├── feature/        # Main feature components
-│   ├── layout/         # Layout components
-│   ├── main/          # Main page components
-│   └── ui/            # Reusable UI components
-├── hooks/              # Custom React hooks with DSA logic
-├── types/              # TypeScript type definitions
-└── contants/           # Mock data and constants
 ```
 
