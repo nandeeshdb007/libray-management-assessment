@@ -11,7 +11,6 @@ import { TransactionsTab } from "../feature/TransactionTab";
 import { BooksTab } from "../feature/BooksTab";
 import { AnalyticsTab } from "../feature/AnalyticsTab";
 import { IssueBookModal } from "../feature/IssueModal";
-import { students } from "../../contants/data";
 
 export default function Home() {
   const {
@@ -19,7 +18,6 @@ export default function Home() {
     setTab,
     handleIssueClick,
     modal,
-    setModal,
     selectedBook,
     handleCloseModal,
     handleConfirmIssue,
@@ -37,7 +35,6 @@ export default function Home() {
     students,
     records,
     books,
-    issueBook,
     categories,
     filteredBooks,
     setSearch,
