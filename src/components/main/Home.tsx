@@ -18,12 +18,6 @@ export default function Home() {
     tab,
     setTab,
     handleIssueClick,
-    filteredBooks,
-    categories,
-    search,
-    category,
-    setCategory,
-    setSearch,
     modal,
     setModal,
     selectedBook,
@@ -44,6 +38,12 @@ export default function Home() {
     records,
     books,
     issueBook,
+    categories,
+    filteredBooks,
+    setSearch,
+    setCategory,
+    search,
+    category,
   } = useLibrary();
 
   return (
