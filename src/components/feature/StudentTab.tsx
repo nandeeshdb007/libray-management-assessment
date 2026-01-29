@@ -15,7 +15,7 @@ export const StudentsTab = ({ students, overdueRecords, bookMap }: StudentsTabPr
                         <th className="px-6 py-4 text-left text-xs font-bold text-slate-700 uppercase">Status</th>
                     </tr>
                 </thead>
-                <tbody className="divide-y">
+                <tbody className="">
                     {students.map(student => {
                         const hasOverdue = overdueRecords.some(r => r.studentId === student.id);
                         return (
