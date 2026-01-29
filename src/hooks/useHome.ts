@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { TabType } from "../types";
 import { useLibrary } from "./useLibrary";
 
 const useHome = () => {
-   const { books, issueBook, } = useLibrary();
+   const { issueBook } = useLibrary();
 
  const [tab, setTab] = useState<TabType>('dashboard');
   const [modal, setModal] = useState(false);
