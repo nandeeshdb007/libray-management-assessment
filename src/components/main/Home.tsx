@@ -11,6 +11,7 @@ import { TransactionsTab } from "../feature/TransactionTab";
 import { BooksTab } from "../feature/BooksTab";
 import { AnalyticsTab } from "../feature/AnalyticsTab";
 import { IssueBookModal } from "../feature/IssueModal";
+import { PopUpModal } from "../ui/PopUp";
 
 export default function Home() {
   const {
@@ -41,7 +42,12 @@ export default function Home() {
     setCategory,
     search,
     category,
+   showPopup,
+    handleClosePopUp
   } = useLibrary();
+
+  console.log("pop", showPopup)
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
@@ -100,6 +106,11 @@ export default function Home() {
         onStudentSelect={setSelectedStudent}
         onConfirm={handleConfirmIssue}
       />
+      {
+        showPopup.isVisible && (
+          <PopUpModal onClose={handleClosePopUp} popUpMessage={showPopup.message} iconName={showPopup.icon} />
+        )
+      }
     </div>
   );
 }

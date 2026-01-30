@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import {
   books as initialBooks,
   students as initialStudents,
@@ -10,8 +10,31 @@ export const useLibrary = () => {
   const [books, setBooks] = useState<Book[]>(initialBooks);
   const [students, setStudents] = useState<Student[]>(initialStudents);
   const [records, setRecords] = useState<BorrowRecord[]>(createRecords());
+  const [showPopup, setShowPopup] = useState<{
+    isVisible: boolean;
+    message: string;
+    icon?: string;
+  }>({
+    isVisible: false,
+    message: "",
+    icon: "",
+  });
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+   
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup((prev) => ({
+          ...prev,
+          isVisible: false,
+        }));
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup.isVisible]);
 
   const bookMap = useMemo(() => new Map(books.map((b) => [b.id, b])), [books]);
   const studentMap = useMemo(
@@ -67,15 +90,50 @@ export const useLibrary = () => {
 
   const issueBook = useCallback(
     (bookId: string, studentId: string) => {
+
+      console.log("callback -clled")
       const book = bookMap.get(bookId);
       const student = studentMap.get(studentId);
 
-      if (!book || !student) return alert("Invalid selection");
-      if (book.availableCopies <= 0) return alert("No copies available");
-      if (student.borrowedBooks.includes(bookId))
-        return alert("Already borrowed");
-      if (student.borrowedBooks.length >= 3)
-        return alert(" Maximum 3 books limit");
+      console.log("book",book)
+      console.log("studnet",student)
+
+      if (!book || !student) {
+        console.log("invalid book or student id")
+        setShowPopup({
+          isVisible: true,
+          message: "Invalid book or student ID",
+          icon: "error",
+        });
+        return;
+      }
+      if (book.availableCopies <= 0) {
+        console.log("no copies available")
+        setShowPopup({
+          isVisible: true,
+          message: "No copies availabl",
+          icon: "error",
+        });
+        return;
+      }
+      if (student.borrowedBooks.includes(bookId)) {
+        console.log("already borrowred")
+        setShowPopup({
+          isVisible: true,
+          message: "Already Borrowred!",
+          icon: "error",
+        });
+        return;
+      }
+      if (student.borrowedBooks.length >= 3) {
+        console.log("max limit reached")
+        setShowPopup({
+          isVisible: true,
+          message: "Maximum 3 books limit",
+          icon: "error",
+        });
+        return;
+      }
 
       const issueDate = new Date();
       const newRecord: BorrowRecord = {
@@ -107,7 +165,9 @@ export const useLibrary = () => {
         ),
       );
 
-      alert("Book issued!");
+      setShowPopup({ isVisible: true, message: "Book issued!", icon: "success" });
+      console.log("book-issued")
+
     },
     [bookMap, studentMap, records.length],
   );
@@ -119,10 +179,7 @@ export const useLibrary = () => {
 
       const today = new Date();
       if (today > record.dueDate) {
-        const days = Math.floor(
-          (today.getTime() - record.dueDate.getTime()) / (1000 * 60 * 60 * 24),
-        );
-        if (!window.confirm(` ${days} days overdue. Continue`)) return;
+        setShowPopup({ isVisible: true, message: "Over due", icon: "error" });
       }
 
       setRecords((prev) =>
@@ -152,10 +209,18 @@ export const useLibrary = () => {
         ),
       );
 
-      alert("Book returned");
+      setShowPopup({
+        isVisible: true,
+        message: "Book returned",
+        icon: "success",
+      });
     },
     [records],
   );
+
+  const handleClosePopUp = () => {
+    setShowPopup({ isVisible: false, message: "", icon: "" });
+  };
 
   return {
     books,
@@ -173,5 +238,7 @@ export const useLibrary = () => {
     setCategory,
     search,
     category,
+    showPopup,
+    handleClosePopUp,
   };
 };
