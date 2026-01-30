@@ -108,7 +108,7 @@ export default function Home() {
       />
       {
         showPopup.isVisible && (
-          <PopUpModal onClose={handleClosePopUp} popUpMessage={showPopup.message} iconName={showPopup.icon} />
+          <PopUpModal onClose={handleClosePopUp} popUpMessage={showPopup.message} iconName={showPopup.icon ?? ''} />
         )
       }
     </div>
