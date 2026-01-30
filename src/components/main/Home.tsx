@@ -15,19 +15,6 @@ import { PopUpModal } from "../ui/PopUp";
 
 export default function Home() {
   const {
-    tab,
-    setTab,
-    handleIssueClick,
-    modal,
-    selectedBook,
-    handleCloseModal,
-    handleConfirmIssue,
-    selectedStudent,
-    setSelectedBook,
-    setSelectedStudent,
-  } = useHome();
-
-  const {
     bookMap,
     studentMap,
     overdueRecords,
@@ -42,11 +29,23 @@ export default function Home() {
     setCategory,
     search,
     category,
-   showPopup,
-    handleClosePopUp
+    showPopup,
+    handleClosePopUp,
+    issueBook,
   } = useLibrary();
 
-  console.log("pop", showPopup)
+  const {
+    tab,
+    setTab,
+    handleIssueClick,
+    modal,
+    selectedBook,
+    handleCloseModal,
+    handleConfirmIssue,
+    selectedStudent,
+    setSelectedBook,
+    setSelectedStudent,
+  } = useHome(issueBook);
 
 
   return (
@@ -106,11 +105,13 @@ export default function Home() {
         onStudentSelect={setSelectedStudent}
         onConfirm={handleConfirmIssue}
       />
-      {
-        showPopup.isVisible && (
-          <PopUpModal onClose={handleClosePopUp} popUpMessage={showPopup.message} iconName={showPopup.icon ?? ''} />
-        )
-      }
+      {showPopup.isVisible && (
+        <PopUpModal
+          onClose={handleClosePopUp}
+          popUpMessage={showPopup.message}
+          iconName={showPopup.icon ?? ""}
+        />
+      )}
     </div>
   );
 }

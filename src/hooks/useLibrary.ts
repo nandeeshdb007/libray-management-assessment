@@ -24,7 +24,7 @@ export const useLibrary = () => {
 
   useEffect(() => {
    
-    if (showPopup) {
+    if (showPopup.isVisible) {
       const timer = setTimeout(() => {
         setShowPopup((prev) => ({
           ...prev,
