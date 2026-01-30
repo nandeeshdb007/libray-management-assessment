@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { TabType } from "../types";
-import { useLibrary } from "./useLibrary";
 
-const useHome = () => {
-   const { issueBook } = useLibrary();
+const useHome = (issueBook: (bookId: string, studentId: string) => void) => {
 
- const [tab, setTab] = useState<TabType>('dashboard');
+  const [tab, setTab] = useState<TabType>('dashboard');
   const [modal, setModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState('');
   const [selectedStudent, setSelectedStudent] = useState('');
@@ -31,8 +29,9 @@ const useHome = () => {
     setSelectedStudent('');
   };
 
-  return { tab, setTab, modal, setModal, selectedBook, handleIssueClick, handleCloseModal,  handleConfirmIssue, selectedStudent,setSelectedBook, setSelectedStudent
- };
+  return {
+    tab, setTab, modal, setModal, selectedBook, handleIssueClick, handleCloseModal, handleConfirmIssue, selectedStudent, setSelectedBook, setSelectedStudent
+  };
 };
 
 export default useHome;
